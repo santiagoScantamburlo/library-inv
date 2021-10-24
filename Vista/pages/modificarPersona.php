@@ -15,12 +15,12 @@ include_once '../estructura/cabecera.php';
         </div>
         <?php
         if (isset($_GET['message'])) {
-            echo "<div class='mt-3 col-md-4 card bg-danger bg-gradient text-white text-center'>" . $_GET['message'] . "</div>";
+            echo "<div class='mt-3 card bg-danger bg-gradient text-white text-center'>" . $_GET['message'] . "</div>";
         }
         ?>
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-md-4"></div>
-            <div class="col-md-4 mt-3">
+            <div class="col-md-4">
                 <div class="d-grid">
                     <button class="btn btn-primary" type="submit" value="Enviar">Enviar</button>
                 </div>

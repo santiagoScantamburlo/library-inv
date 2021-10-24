@@ -61,19 +61,10 @@ class validador
     {
         $mensajeError = "";
         $valido = true;
-        $nro_dni = $datos['nro_dni'];
         $nombre = $datos['nombre'];
         $apellido = $datos['apellido'];
         $telefono = $datos['telefono'];
         $domicilio = $datos['domicilio'];
-
-        //VALIDO EL NUMERO DE DNI
-        $checkValid = v::positive()->noWhitespace()->length(7, 8); //CREO LA INSTANCIA DE VALIDADOR DE LA LIBRERIA
-        $valido = $checkValid->validate($nro_dni); //REALIZA LA VALIDACION CON LOS PARAMETROS ELEGIDOS ANTERIORMENTE
-        if (!$valido) {
-            //EN CASO DE NO SER VALIDO RETORNA UN MENSAJE DE ERROR
-            $mensajeError .= "DNI invalido<br>";
-        }
 
         $checkValid = v::alpha()->length(1, 50)->regex("/^[A-Z]+([\ A-Za-z]+)*/");
         $valido = $checkValid->validate($nombre);
@@ -93,7 +84,7 @@ class validador
             $mensajeError .= "Telefono invalido<br>";
         }
 
-        $checkValid = v::stringVal()->length(1, 200);
+        $checkValid = v::stringVal()->length(5, 200);
         $valido = $checkValid->validate($domicilio);
         if (!$valido) {
             $mensajeError .= "Domicilio invalido<br>";

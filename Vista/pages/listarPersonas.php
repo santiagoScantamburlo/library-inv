@@ -18,7 +18,7 @@ include_once '../estructura/cabecera.php';
     if (count($lista) > 0) {
     ?>
 
-
+        <h1 class="text-center">Personas en la Base de Datos</h1>
         <table class='table mt-3'>
             <thead class='table-dark'>
                 <tr>
