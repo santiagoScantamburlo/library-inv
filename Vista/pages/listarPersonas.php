@@ -1,4 +1,5 @@
 <?php
+$titulo = "Listar Personas";
 include_once '../estructura/cabecera.php';
 if (isset($_GET['message'])) {
     print "<script type='text/javascript'>alert('" . $_GET['message'] . "')</script>";
@@ -40,8 +41,9 @@ if (count($lista) > 0) {
         <input name='nro_dni' id='nro_dni' type='hidden' value='$dni'><button class='btn btn-warning btn-sm' type='submit'><i class='fas fa-user-edit'></i></button></td></form>
         <form method='post' action='../acciones/accionEliminarPersona.php'>
         <td class='text-center'>
-        <input name='nro_dni' id='nro_dni' type='hidden' value='$dni'><button class='btn btn-warning btn-sm' type='submit'><i class='bi bi-trash'></i></button></td></form></tr></table>";
+        <input name='nro_dni' id='nro_dni' type='hidden' value='$dni'><button class='btn btn-warning btn-sm' type='submit'><i class='bi bi-trash'></i></button></td></form></tr>";
         }
+        echo "</table>";
     } else {
         echo "<h1>No hay personas cargadas en la base de datos</h1>";
     }

@@ -1,4 +1,5 @@
 <?php
+$titulo = "Modificar Persona";
 include_once '../estructura/cabecera.php';
 if (isset($_GET['message'])) {
     print "<script type='text/javascript'>alert('" . $_GET['message'] . "')</script>";

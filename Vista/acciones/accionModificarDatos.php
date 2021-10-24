@@ -11,12 +11,14 @@ $lista = $abmPersona->buscar($datosBusqueda);
 if (!isset($lista)) {
     $message = "La persona ingresada no se encuentra en la base de datos";
     header('Location: accionModificarPersona.php?message=' . urlencode($message));
+    exit;
 } else {
     $validador = new validador();
     $message = $validador->validarDatosModificacion($datos);
 
     if ($message != "") {
         header('Location: accionModificarPersona.php?message=' . urlencode($message));
+        exit;
     } else {
         $exito = $abmPersona->modificar($datos);
         if ($exito) {
@@ -25,5 +27,6 @@ if (!isset($lista)) {
             $message = "Error en la modificacion de datos";
         }
         header('Location: ../pages/listarPersonas.php?message' . urlencode($message));
+        exit;
     }
 }

@@ -9,6 +9,7 @@ $message = $validador->validarDatos($datos);
 
 if ($message != "") {
     header("Location: ../pages/nuevaPersona.php?message=" . urlencode($message));
+    exit;
 } else {
     $abmPersona = new AbmPersona();
 
