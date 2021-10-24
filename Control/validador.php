@@ -21,37 +21,37 @@ class validador
         $valido = $checkValid->validate($nro_dni); //REALIZA LA VALIDACION CON LOS PARAMETROS ELEGIDOS ANTERIORMENTE
         if (!$valido) {
             //EN CASO DE NO SER VALIDO RETORNA UN MENSAJE DE ERROR
-            $mensajeError .= "DNI invalido";
+            $mensajeError .= "DNI invalido<br>";
         }
 
         $checkValid = v::alpha()->length(1, 50)->regex("/^[A-Z]+([\ A-Za-z]+)*/");
         $valido = $checkValid->validate($nombre);
         if (!$valido) {
-            $mensajeError .= "Nombre invalido";
+            $mensajeError .= "Nombre invalido<br>";
         }
 
         $checkValid = v::alpha()->length(1, 50)->regex("/^[A-Z]+([\ A-Za-z]+)*/");
         $valido = $checkValid->validate($apellido);
         if (!$valido) {
-            $mensajeError .= "Apellido invalido";
+            $mensajeError .= "Apellido invalido<br>";
         }
 
         $checkValid = v::minAge(0)->date();
         $valido = $checkValid->validate($fecha_nac);
         if (!$valido) {
-            $mensajeError .= "Fecha invalida";
+            $mensajeError .= "Fecha invalida<br>";
         }
 
         $checkValid = v::phone();
         $valido = $checkValid->validate($telefono);
         if (!$valido) {
-            $mensajeError .= "Telefono invalido";
+            $mensajeError .= "Telefono invalido<br>";
         }
 
-        $checkValid = v::stringVal()->length(1, 200);
+        $checkValid = v::stringType()->length(5, 200);
         $valido = $checkValid->validate($domicilio);
         if (!$valido) {
-            $mensajeError .= "Domicilio invalido";
+            $mensajeError .= "Domicilio invalido<br>";
         }
 
         return $mensajeError;
@@ -72,31 +72,31 @@ class validador
         $valido = $checkValid->validate($nro_dni); //REALIZA LA VALIDACION CON LOS PARAMETROS ELEGIDOS ANTERIORMENTE
         if (!$valido) {
             //EN CASO DE NO SER VALIDO RETORNA UN MENSAJE DE ERROR
-            $mensajeError .= "DNI invalido";
+            $mensajeError .= "DNI invalido<br>";
         }
 
         $checkValid = v::alpha()->length(1, 50)->regex("/^[A-Z]+([\ A-Za-z]+)*/");
         $valido = $checkValid->validate($nombre);
         if (!$valido) {
-            $mensajeError .= "Nombre invalido";
+            $mensajeError .= "Nombre invalido<br>";
         }
 
         $checkValid = v::alpha()->length(1, 50)->regex("/^[A-Z]+([\ A-Za-z]+)*/");
         $valido = $checkValid->validate($apellido);
         if (!$valido) {
-            $mensajeError .= "Apellido invalido";
+            $mensajeError .= "Apellido invalido<br>";
         }
 
         $checkValid = v::phone();
         $valido = $checkValid->validate($telefono);
         if (!$valido) {
-            $mensajeError .= "Telefono invalido";
+            $mensajeError .= "Telefono invalido<br>";
         }
 
         $checkValid = v::stringVal()->length(1, 200);
         $valido = $checkValid->validate($domicilio);
         if (!$valido) {
-            $mensajeError .= "Domicilio invalido";
+            $mensajeError .= "Domicilio invalido<br>";
         }
 
         return $mensajeError;
@@ -112,5 +112,10 @@ class validador
             $mensajeError .= "DNI invalido";
         }
         return $mensajeError;
+    }
+
+    public function tieneError($mensaje) {
+        return v::contains('Error')->validate($mensaje);
+        
     }
 }

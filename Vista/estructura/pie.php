@@ -1,6 +1,6 @@
 <!-- Pie redirect index php htdocs -->
 <footer class="bg-dark mt-auto">
-    <div class="text-center text-white py-2" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="text-center text-white py-2 bg-secondary">
         <a class="text-white" href="https://github.com/santiagoScantamburlo/library-inv">Desarrollado por Rocío Graff y Santiago Scantamburlo.</a>
     </div>
 </footer>

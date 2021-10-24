@@ -1,11 +1,23 @@
 <?php
 include_once '../../configuracion.php';
 $datos = data_submitted();
+
+$validador = new validador();
+
+$datos = data_submitted();
+$dni = $datos['nro_dni'];
+$message = $validador->validarDni($dni);
+
+if ($message != "") {
+    header('Location: ../pages/modificarPersona.php?message=' . urlencode($message));
+    exit;
+}
+
 $abmPersona = new AbmPersona();
 $lista = $abmPersona->buscar($datos);
-$message = "Persona no encontrada";
 
 if (!isset($lista[0])) {
+    $message = "Persona no encontrada";
     header('Location: ../pages/modificarPersona.php?message=' . urlencode($message));
     exit;
 }
@@ -14,7 +26,7 @@ $titulo = "Modificar Persona";
 include_once '../estructura/cabecera.php';
 
 if (isset($_GET['message'])) {
-    print "<script type='text/javascript'>alert('" . $_GET['message'] . "')</script>";
+    echo "<div class='mt-3 col-md-4 card bg-danger text-white'>" . $_GET['message'] . "</div>";
 }
 
 ?>
@@ -22,8 +34,8 @@ if (isset($_GET['message'])) {
     <form id="modificarPersona" name="modificarPersona" method="post" action="../acciones/accionModificarDatos.php">
         <div class="col-md-12">
             <?php
-            echo "<input id='nro_dni' name='nro_dni' type='hidden' value='{$lista[0]->getNroDni()}'>";
-            echo "<input id='fecha_nac' name='fecha_nac' type='hidden' value='{$lista[0]->getFechaNac()}'";
+            echo "<input id='nro_dni' name='nro_dni' type='hidden' value=" . $lista[0]->getNroDni() . ">";
+            echo "<input id='fecha_nac' name='fecha_nac' type='hidden' value=" . $lista[0]->getFechaNac() . ">";
             ?>
         </div>
         <div class="col-md-4">

@@ -21,7 +21,7 @@
 <body class="d-flex flex-column min-vh-100">
     <header>
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../home/index.php">Inicio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">

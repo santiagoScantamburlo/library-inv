@@ -66,7 +66,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        },
+        }
     });
 });
 
@@ -80,10 +80,11 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            nroDni: {
+            nro_dni: {
+                message: 'DNI no valido',
                 validators: {
                     notEmpty: {
-                        message: 'Debe ingresar un DNI'
+                        message: 'El Dni es obligatorio'
                     },
                     regexp: {
                         regexp: /^\d{8}$/,

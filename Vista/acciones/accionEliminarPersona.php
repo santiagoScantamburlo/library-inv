@@ -7,7 +7,7 @@ $dni = $datos['nro_dni'];
 $message = $validador->validarDni($dni);
 
 if ($message != "") {
-    header('Location: ../pages/eliminarPersona.php?message=' . urlencode($dni));
+    header('Location: ../pages/eliminarPersona.php?message=' . urlencode($message));
     exit;
 }
 

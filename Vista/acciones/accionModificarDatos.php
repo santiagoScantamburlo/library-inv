@@ -2,21 +2,18 @@
 include_once '../../configuracion.php';
 $datos = data_submitted();
 
-$datosBusqueda['nro_dni'] = $datos['nro_dni'];
-$datosBusqueda['fecha_nac'] = $datos['fecha_nac'];
-$abmPersona = new AbmPersona();
+$validador = new validador();
+$message = $validador->validarDatosModificacion($datos);
 
-$lista = $abmPersona->buscar($datosBusqueda);
+if ($message == "") {
+    $datosBusqueda['nro_dni'] = $datos['nro_dni'];
+    $datosBusqueda['fecha_nac'] = $datos['fecha_nac'];
+    $abmPersona = new AbmPersona();
 
-if (!isset($lista)) {
-    $message = "La persona ingresada no se encuentra en la base de datos";
-    header('Location: accionModificarPersona.php?message=' . urlencode($message));
-    exit;
-} else {
-    $validador = new validador();
-    $message = $validador->validarDatosModificacion($datos);
+    $lista = $abmPersona->buscar($datosBusqueda);
 
-    if ($message != "") {
+    if (!isset($lista)) {
+        $message = "La persona ingresada no se encuentra en la base de datos";
         header('Location: accionModificarPersona.php?message=' . urlencode($message));
         exit;
     } else {
@@ -26,7 +23,10 @@ if (!isset($lista)) {
         } else {
             $message = "Error en la modificacion de datos";
         }
-        header('Location: ../pages/listarPersonas.php?message' . urlencode($message));
+        header('Location: ../pages/listarPersonas.php?message=' . urlencode($message));
         exit;
     }
+} else {
+    header('Location: accionModificarPersona.php?message=' . urlencode($message));
+    exit;
 }

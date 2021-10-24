@@ -1,16 +1,25 @@
 <?php
 $titulo = "Listar Personas";
 include_once '../estructura/cabecera.php';
-if (isset($_GET['message'])) {
-    print "<script type='text/javascript'>alert('" . $_GET['message'] . "')</script>";
-}
-$abmPersona = new AbmPersona();
-$lista = $abmPersona->buscar(null);
-if (count($lista) > 0) {
 ?>
+<div class="container mt-3">
+    <?php
+    if (isset($_GET['message'])) {
+        $validador = new validador();
+        $error = $validador->tieneError($_GET['message']);
+        if(!$error) {
+        echo "<div class='mt-3 container card bg-success bg-gradient text-white text-center'>" . $_GET['message'] . "</div>";
+        } else {
+        echo "<div class='mt-3 container card bg-danger bg-gradient text-white text-center'>" . $_GET['message'] . "</div>";
+        }
+    }
+    $abmPersona = new AbmPersona();
+    $lista = $abmPersona->buscar(null);
+    if (count($lista) > 0) {
+    ?>
 
-    <div class="container mt-3">
-        <table class='table'>
+
+        <table class='table mt-3'>
             <thead class='table-dark'>
                 <tr>
                     <th scope='col' class='text-center'>DNI</th>
@@ -45,12 +54,12 @@ if (count($lista) > 0) {
         }
         echo "</table>";
     } else {
-        echo "<h1>No hay personas cargadas en la base de datos</h1>";
+        echo "<h1 class='text-center'>No hay personas cargadas en la base de datos</h1>";
     }
 
         ?>
-    </div>
+</div>
 
-    <?php
-    include_once '../estructura/pie.php';
-    ?>
+<?php
+include_once '../estructura/pie.php';
+?>
