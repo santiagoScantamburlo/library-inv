@@ -2,17 +2,10 @@
 $titulo = "Nueva Persona";
 include_once '../estructura/cabecera.php';
 ?>
-<div class="container col-md-4"></div>
+<div class="col-md-4"></div>
 <div class="container mt-3 col-md-4">
-    <?php
-    if (isset($_GET['message'])) {
-        echo "<div class='mt-3 col-md-4 card bg-danger bg-danger text-white text-center'>" . $_GET['message'] . "</div>";
-    }
-    ?>
-
-
     <h1 class="text-center">Formulario para cargar persona</h1>
-    <form class="mt-3" id="datosPersona" name="datosPersona" method="post" action="../acciones/accionNuevaPersona.php">
+    <form class="mt-3" id="datoPersona" name="datosPersona" method="post" action="../acciones/accionNuevaPersona.php">
         <div>
             <div class="form-floating">
                 <input class="form-control" id="nro_dni" name="nro_dni" type="text" maxlength="8" minlength="7" placeholder="DNI">
@@ -49,6 +42,11 @@ include_once '../estructura/cabecera.php';
                 <label for="domicilio">Ingrese su domicilio</label>
             </div>
         </div>
+        <?php
+        if (isset($_GET['message'])) {
+            echo "<div class='mt-3 card bg-danger bg-gradient text-white text-center'>" . $_GET['message'] . "</div>";
+        }
+        ?>
         <div class="mt-3">
             <div class="d-grid">
                 <button class="btn btn-primary" type="submit">Enviar</button>

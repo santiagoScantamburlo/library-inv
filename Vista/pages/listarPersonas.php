@@ -50,7 +50,7 @@ include_once '../estructura/cabecera.php';
         <input name='nro_dni' id='nro_dni' type='hidden' value='$dni'><button class='btn btn-warning btn-sm' type='submit'><i class='fas fa-user-edit'></i></button></td></form>
         <form method='post' action='../acciones/accionEliminarPersona.php'>
         <td class='text-center'>
-        <input name='nro_dni' id='nro_dni' type='hidden' value='$dni'><button class='btn btn-warning btn-sm' type='submit'><i class='bi bi-trash'></i></button></td></form></tr>";
+        <input name='nro_dni' id='nro_dni' type='hidden' value='$dni'><button class='btn btn-danger btn-sm' type='submit'><i class='bi bi-trash'></i></button></td></form></tr>";
         }
         echo "</table>";
     } else {

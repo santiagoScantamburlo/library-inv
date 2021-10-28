@@ -20,7 +20,7 @@ if (isset($lista)) {
             </div>
             <?php
             if (isset($_GET['message'])) {
-                echo "<div class='card bg-danger bg-gradient text-white text-center col-md-4'>" . $_GET['message'] . "</div>";
+                echo "<div class='mt-3 card bg-danger bg-gradient text-white text-center'>" . $_GET['message'] . "</div>";
             }
             ?>
             <div class="row">
